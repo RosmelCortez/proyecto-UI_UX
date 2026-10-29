@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patitas Felices — Clínica Veterinaria de Barrio | Agendamiento en 2 Minutos</title>
+  
+  <!-- Script anti-parpadeo para cargar tema inmediatamente antes del render -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <!-- Favicon con huella amigable -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231e7e34'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm6 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z'/></svg>">
+
+  <!-- Tipografía Google: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configuración de Tailwind con Modo Oscuro por Clases -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#ebf7ee',
+              100: '#c9eed0',
+              500: '#1e7e34',
+              700: '#155724',
+              800: '#0e3d19',
+            },
+            emergency: {
+              50: '#fef2f2',
+              100: '#fee2e2',
+              500: '#ef4444',
+              600: '#dc2626',
+              700: '#b91c1c',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos del Sistema & Accesibilidad -->
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased pb-20 md:pb-0 transition-colors duration-200">
+
+  <!-- ========================================================================
+       1. HEADER FIJO Y RESPONSIVE CON BOTÓN DE EMERGENCIAS Y TOGGLE DARK MODE
+       ======================================================================== -->
+  <header class="sticky top-0 z-50 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-200">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+      
+      <!-- 1. Logo y Slogan de Barrio -->
+      <a href="#inicio" class="flex items-center gap-2.5 sm:gap-3 shrink-0 focus-visible:ring-4 focus-visible:ring-emerald-200 rounded-xl py-1 select-none" aria-label="Patitas Felices Inicio">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-700 flex items-center justify-center text-white text-xl sm:text-2xl shadow-sm shrink-0">
+          🐾
+        </div>
+        <div class="flex flex-col">
+          <span class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+            Patitas <span class="text-emerald-700 dark:text-emerald-400">Felices</span>
+          </span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-none mt-0.5">
+            Clínica Veterinaria • 8 años contigo
+          </span>
+        </div>
+      </a>
+
+      <!-- 2. Enlaces de Navegación del Centro (Limpio y contenido) -->
+      <nav class="hidden lg:flex items-center gap-4 xl:gap-6" aria-label="Navegación principal">
+        <a href="#inicio" class="text-sm xl:text-base font-semibold text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors py-1">Inicio</a>
+        <a href="#servicios" class="text-sm xl:text-base font-semibold text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors py-1 whitespace-nowrap">Servicios y Precios</a>
+        <a href="#equipo" class="text-sm xl:text-base font-semibold text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors py-1 whitespace-nowrap">Nuestro Equipo</a>
+        <a href="#testimonios" class="text-sm xl:text-base font-semibold text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors py-1">Testimonios</a>
+        <a href="#contacto" class="text-sm xl:text-base font-semibold text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors py-1">Contacto</a>
+        <button type="button" class="open-my-pets-btn text-xs xl:text-sm font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-300 dark:border-emerald-800 px-3 py-1.5 rounded-full hover:bg-emerald-100 transition-colors flex items-center gap-1.5 shadow-sm">
+          <span>🐾</span> Mis Mascotas
+        </button>
+      </nav>
+
+      <!-- 3. Acciones de la Derecha (Contenedor agrupado y responsive) -->
+      <div class="flex items-center gap-2.5 sm:gap-3 xl:gap-4 shrink-0">
+        
+        <!-- Toggle Modo Oscuro / Claro -->
+        <button type="button" class="theme-toggle-btn btn-accessible p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-800 transition-colors shadow-sm min-h-[42px] min-w-[42px] sm:min-h-[46px] sm:min-w-[46px] flex items-center justify-center shrink-0" aria-label="Cambiar tema de color" title="Alternar entre modo claro y modo oscuro">
+          <span class="theme-icon-sun hidden text-lg sm:text-xl">☀️</span>
+          <span class="theme-icon-moon text-lg sm:text-xl">🌙</span>
+        </button>
+
+        <!-- Botón Persistente de Urgencias SOS 24h -->
+        <button type="button" class="open-sos-btn btn-accessible btn-emergency text-xs sm:text-sm py-2 px-3 sm:py-2.5 sm:px-4 rounded-xl flex items-center gap-1.5 sm:gap-2 shadow-sm animate-pulse-subtle shrink-0" title="Atención inmediata de urgencias">
+          <span class="text-base sm:text-lg">🚨</span>
+          <span class="font-bold uppercase tracking-wider whitespace-nowrap"><span class="hidden sm:inline">Urgencias </span>24h</span>
+        </button>
+
+        <!-- CTA Principal Agendar (Desktop / Tablet) -->
+        <a href="#agendar-seccion" class="hidden md:inline-flex btn-accessible btn-primary text-xs sm:text-sm py-2 px-3.5 sm:py-2.5 sm:px-4 xl:px-5 rounded-xl font-bold shadow-sm shrink-0 whitespace-nowrap">
+          Agendar Cita
+        </a>
+
+        <!-- Botón Hamburguesa Móvil -->
+        <button id="menu-toggle" type="button" class="lg:hidden p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-emerald-200 min-h-[42px] min-w-[42px] flex items-center justify-center shrink-0" aria-label="Abrir menú" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobile-nav" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-6 space-y-4 shadow-lg animate-fadeIn">
+      <nav class="flex flex-col space-y-3" aria-label="Navegación móvil">
+        <a href="#inicio" class="mobile-nav-link text-lg font-semibold text-slate-800 dark:text-slate-200 py-2 border-b border-slate-100 dark:border-slate-800">Inicio</a>
+        <a href="#servicios" class="mobile-nav-link text-lg font-semibold text-slate-800 dark:text-slate-200 py-2 border-b border-slate-100 dark:border-slate-800">Servicios y Precios Transparentes</a>
+        <a href="#equipo" class="mobile-nav-link text-lg font-semibold text-slate-800 dark:text-slate-200 py-2 border-b border-slate-100 dark:border-slate-800">Nuestro Equipo Veterinario</a>
+        <a href="#testimonios" class="mobile-nav-link text-lg font-semibold text-slate-800 dark:text-slate-200 py-2 border-b border-slate-100 dark:border-slate-800">Opiniones de Vecinos</a>
+        <a href="#contacto" class="mobile-nav-link text-lg font-semibold text-slate-800 dark:text-slate-200 py-2 border-b border-slate-100 dark:border-slate-800">Ubicación y Horarios</a>
+        <button type="button" class="open-my-pets-btn text-left text-lg font-semibold text-emerald-700 dark:text-emerald-400 py-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-2">
+          <span>🐾</span> Ver Historial de «Mis Mascotas»
+        </button>
+      </nav>
+      <div class="pt-2 flex flex-col gap-3">
+        <a href="#agendar-seccion" class="mobile-nav-link btn-accessible btn-primary w-full text-center">
+          📅 Agendar Cita en Línea
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ========================================================================
+         2. HERO SECTION CON VALOR DE CONFIANZA Y AGENDAMIENTO EN 2 MINUTOS
+         ======================================================================== -->
+    <section class="relative bg-gradient-to-b from-emerald-50/60 to-slate-50 dark:from-slate-900 dark:to-slate-950 py-16 md:py-24 overflow-hidden transition-colors duration-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Textos y Llamados a la Acción -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div class="inline-flex items-center gap-2 bg-emerald-100/80 dark:bg-emerald-950/70 border border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 px-3.5 py-1.5 rounded-full text-sm font-bold">
+              <span>📍 Clínica de Barrio en Providencia</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-700 dark:bg-emerald-400"></span>
+              <span>8 Años de Trayectoria</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.12]">
+              Cuidado veterinario con amor, <span class="text-emerald-700 dark:text-emerald-400 underline decoration-emerald-300 dark:decoration-emerald-700 underline-offset-4">sin sorpresas</span> ni esperas.
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed max-w-2xl">
+              Olvídate de esperar horas por WhatsApp o de cobros inesperados en caja. Revisa nuestros precios transparentes y <strong>agenda la cita de tu mascota en menos de 2 minutos</strong>.
+            </p>
+
+            <!-- Acciones Principales -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <a href="#agendar-seccion" class="btn-accessible btn-primary text-base sm:text-lg font-bold px-8 shadow-md">
+                📅 Agendar Cita Ahora
+              </a>
+              <button type="button" class="open-sos-btn btn-accessible btn-outline text-base font-semibold px-6">
+                🚨 ¿Tienes una Urgencia Médica?
+              </button>
+            </div>
+
+            <!-- Badges de Confianza -->
+            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+              <div>
+                <span class="block text-2xl font-extrabold text-emerald-800 dark:text-emerald-400">5.0 ★</span>
+                <span class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">+450 reseñas en Google</span>
+              </div>
+              <div>
+                <span class="block text-2xl font-extrabold text-emerald-800 dark:text-emerald-400">&lt; 2 min</span>
+                <span class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">Agendamiento 100% online</span>
+              </div>
+              <div>
+                <span class="block text-2xl font-extrabold text-emerald-800 dark:text-emerald-400">100%</span>
+                <span class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">Precios públicos claros</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Imagen Destacada con Tarjetas Flotantes -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 bg-slate-200 dark:bg-slate-800 aspect-[4/3] sm:aspect-[4/3]">
+              <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80" alt="Veterinaria examinando con cariño a un perro en consulta" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Card flotante: Certificación Cat-Friendly -->
+            <div class="absolute -bottom-6 left-2 sm:left-4 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-4 rounded-2xl shadow-xl flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950/80 flex items-center justify-center text-2xl">
+                🐱
+              </div>
+              <div>
+                <span class="block font-bold text-slate-900 dark:text-white text-sm">Protocolo Cat-Friendly</span>
+                <span class="text-xs text-slate-600 dark:text-slate-300">Manejo felino libre de estrés</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         3. SECCIÓN: SERVICIOS CON PRECIOS TRANSPARENTES
+         ======================================================================== -->
+    <section id="servicios" class="py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors duration-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-3.5 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-800">
+            Precios Públicos y Claros
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-3">
+            Nuestros Servicios Médicos
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mt-2">
+            Sin letras chicas ni sorpresas al momento de pagar. Todas las consultas incluyen revisión clínica completa y recomendaciones de cuidado.
+          </p>
+        </div>
+
+        <!-- Cuadrícula Dinámica de Servicios -->
+        <div id="home-services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Renderizado automáticamente desde app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         4. SECCIÓN PRINCIPAL: FLUJO DE AGENDAMIENTO EN 3 PASOS (WIZARD)
+         ======================================================================== -->
+    <section id="agendar-seccion" class="py-20 bg-slate-50 dark:bg-slate-950 relative transition-colors duration-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Encabezado del Agendador -->
+        <div class="text-center mb-10">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/70 px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">
+            Reserva Inmediata en Vivo
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+            Agenda tu Cita en 3 Simples Pasos
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-base mt-1">
+            Sin crear cuenta ni contraseñas. Confirmación instantánea a tu WhatsApp.
+          </p>
+        </div>
+
+        <!-- Contenedor Principal del Formulario -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden transition-colors duration-200">
+          
+          <!-- Barra de Progreso de Pasos (1, 2, 3) -->
+          <div class="bg-slate-100/80 dark:bg-slate-800/80 px-6 py-4 border-b border-slate-200 dark:border-slate-700">
+            <div class="flex items-center justify-between max-w-md mx-auto">
+              
+              <!-- Paso 1 Badge -->
+              <div class="flex items-center gap-2">
+                <span class="progress-step-badge w-8 h-8 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center text-sm ring-4 ring-emerald-200 dark:ring-emerald-800">
+                  1
+                </span>
+                <span class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 hidden sm:inline">Servicio y Mascota</span>
+              </div>
+
+              <div class="flex-1 h-1 bg-slate-300 dark:bg-slate-700 mx-3 rounded-full"></div>
+
+              <!-- Paso 2 Badge -->
+              <div class="flex items-center gap-2">
+                <span class="progress-step-badge w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 font-bold flex items-center justify-center text-sm">
+                  2
+                </span>
+                <span class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 hidden sm:inline">Fecha y Hora</span>
+              </div>
+
+              <div class="flex-1 h-1 bg-slate-300 dark:bg-slate-700 mx-3 rounded-full"></div>
+
+              <!-- Paso 3 Badge -->
+              <div class="flex items-center gap-2">
+                <span class="progress-step-badge w-8 h-8 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 font-bold flex items-center justify-center text-sm">
+                  3
+                </span>
+                <span class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 hidden sm:inline">Tus Datos</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Contenido de los Pasos -->
+          <div class="p-6 sm:p-10">
+
+            <!-- ----------------------------------------------------------------
+                 PASO 1: SELECCIÓN DE SERVICIO Y REGISTRO DE MASCOTA
+                 ---------------------------------------------------------------- -->
+            <div id="wizard-step-1" class="space-y-8">
+              
+              <!-- Alerta de Urgencias SOS -->
+              <div class="bg-rose-50 dark:bg-rose-950/40 border-2 border-rose-200 dark:border-rose-900/60 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">🚨</span>
+                  <div>
+                    <h4 class="font-bold text-rose-950 dark:text-rose-100 text-sm">¿Tu mascota corre peligro grave o tiene una emergencia?</h4>
+                    <p class="text-xs text-rose-800 dark:text-rose-300">No esperes una cita agendada; te atendemos inmediatamente en la clínica.</p>
+                  </div>
+                </div>
+                <button type="button" class="open-sos-btn btn-accessible bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold py-2 px-4 rounded-xl whitespace-nowrap">
+                  Llamar a Urgencias Ahora
+                </button>
+              </div>
+
+              <!-- 1.1 Seleccionar Servicio -->
+              <div>
+                <label class="block font-bold text-slate-900 dark:text-white text-base mb-1">
+                  1. Selecciona el servicio que necesitas:
+                </label>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Haz clic sobre la opción deseada para ver tarifa y duración estimada.</p>
+                
+                <div id="booking-services-list" class="space-y-3">
+                  <!-- Inyectado dinámicamente con JavaScript -->
+                </div>
+                <p id="service-error" class="hidden text-xs text-rose-600 dark:text-rose-400 font-bold mt-2 flex items-center gap-1">
+                  ⚠️ Por favor selecciona al menos un servicio.
+                </p>
+              </div>
+
+              <!-- 1.2 Datos de la Mascota -->
+              <div class="border-t border-slate-200 dark:border-slate-800 pt-6 space-y-6">
+                <h4 class="font-bold text-slate-900 dark:text-white text-base">2. Cuéntanos sobre tu mascota:</h4>
+                
+                <!-- Selector de Especie con Chips -->
+                <div>
+                  <span class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Especie:</span>
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <button type="button" class="species-chip btn-accessible bg-emerald-700 text-white border-2 border-emerald-700 py-2 px-5 text-sm font-bold rounded-xl" data-species="perro">
+                      🐶 Perro
+                    </button>
+                    <button type="button" class="species-chip btn-accessible bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-2 border-slate-300 dark:border-slate-700 py-2 px-5 text-sm font-semibold rounded-xl hover:border-emerald-600" data-species="gato">
+                      🐱 Gato
+                    </button>
+                    <button type="button" class="species-chip btn-accessible bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-2 border-slate-300 dark:border-slate-700 py-2 px-5 text-sm font-semibold rounded-xl hover:border-emerald-600" data-species="exotico">
+                      🐰 Conejo / Otro
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Nombre y Edad -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="pet-name" class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">
+                      Nombre de la mascota: <span class="text-rose-600 dark:text-rose-400">*</span>
+                    </label>
+                    <input type="text" id="pet-name" class="input-accessible" placeholder="Ej: Milo o Simón" required>
+                    <p id="pet-name-error" class="hidden text-xs text-rose-600 dark:text-rose-400 font-bold mt-1">
+                      ⚠️ Ingresa el nombre de tu mascota.
+                    </p>
+                  </div>
+
+                  <div>
+                    <label for="pet-age" class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">
+                      Etapa o edad aproximada:
+                    </label>
+                    <select id="pet-age" class="input-accessible">
+                      <option value="cachorro">Cachorro / Gatito (&lt; 1 año)</option>
+                      <option value="adulto" selected>Adulto (1 a 7 años)</option>
+                      <option value="senior">Senior / Adulto Mayor (&gt; 7 años)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Motivo de la visita -->
+                <div>
+                  <label for="pet-reason" class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">
+                    Motivo o síntomas principales (Opcional):
+                  </label>
+                  <input type="text" id="pet-reason" class="input-accessible" placeholder="Ej: No quiere comer, revisión de vacunas, renguea de una pata">
+                </div>
+
+              </div>
+
+              <!-- Botón Siguiente Paso 1 -->
+              <div class="pt-4 flex justify-end">
+                <button type="button" id="btn-to-step-2" class="btn-accessible btn-primary text-base font-bold w-full sm:w-auto px-8">
+                  Continuar a Fecha y Hora →
+                </button>
+              </div>
+
+            </div>
+
+            <!-- ----------------------------------------------------------------
+                 PASO 2: CALENDARIO Y SELECCIÓN DE HORARIOS DISPONIBLES
+                 ---------------------------------------------------------------- -->
+            <div id="wizard-step-2" class="hidden space-y-8">
+              
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Elige la fecha para tu visita</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Selecciona uno de los días disponibles en los próximos 7 días:</p>
+                
+                <!-- Chips de los próximos 7 días -->
+                <div id="calendar-dates" class="flex gap-2 overflow-x-auto py-3 no-scrollbar">
+                  <!-- Inyectado desde app.js -->
+                </div>
+              </div>
+
+              <!-- Selector de Horarios: Mañana y Tarde -->
+              <div id="slots-container" class="space-y-6">
+                
+                <!-- Mañana -->
+                <div>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-lg">☀️</span>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-base">Horarios de Mañana (09:00 - 12:30 hrs)</h4>
+                  </div>
+                  <div id="morning-slots" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2.5">
+                    <!-- Inyectado dinámicamente -->
+                  </div>
+                </div>
+
+                <!-- Tarde -->
+                <div>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-lg">🌤️</span>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-base">Horarios de Tarde (14:30 - 19:30 hrs)</h4>
+                  </div>
+                  <div id="afternoon-slots" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-2.5">
+                    <!-- Inyectado dinámicamente -->
+                  </div>
+                </div>
+
+                <p id="time-error" class="hidden text-xs text-rose-600 dark:text-rose-400 font-bold flex items-center gap-1">
+                  ⚠️ Por favor selecciona un bloque de horario disponible.
+                </p>
+
+              </div>
+
+              <!-- Botones de Navegación del Paso 2 -->
+              <div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col-reverse sm:flex-row justify-between gap-4">
+                <button type="button" id="btn-back-to-step-1" class="btn-accessible btn-outline text-slate-700 dark:text-slate-200 text-sm font-semibold">
+                  ← Volver al Servicio
+                </button>
+                <button type="button" id="btn-to-step-3" class="btn-accessible btn-primary text-base font-bold px-8">
+                  Continuar a Mis Datos →
+                </button>
+              </div>
+
+            </div>
+
+            <!-- ----------------------------------------------------------------
+                 PASO 3: DATOS DEL TUTOR Y CONFIRMACIÓN PREVIA
+                 ---------------------------------------------------------------- -->
+            <div id="wizard-step-3" class="hidden space-y-8">
+              
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Tus datos para confirmar la cita</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Te enviaremos el comprobante y recordatorios directo a tu WhatsApp.</p>
+              </div>
+
+              <!-- Resumen dinámico de la cita seleccionada -->
+              <div id="step3-summary">
+                <!-- Se llena dinámicamente con JS -->
+              </div>
+
+              <!-- Formulario de Contacto -->
+              <div class="space-y-4">
+                <div>
+                  <label for="owner-name" class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">
+                    Tu nombre completo: <span class="text-rose-600 dark:text-rose-400">*</span>
+                  </label>
+                  <input type="text" id="owner-name" class="input-accessible" placeholder="Ej: Valentina Ramos" required>
+                  <p id="owner-name-error" class="hidden text-xs text-rose-600 dark:text-rose-400 font-bold mt-1">
+                    ⚠️ Por favor ingresa tu nombre.
+                  </p>
+                </div>
+
+                <div>
+                  <label for="owner-phone" class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">
+                    Teléfono móvil (WhatsApp): <span class="text-rose-600 dark:text-rose-400">*</span>
+                  </label>
+                  <input type="tel" id="owner-phone" class="input-accessible" placeholder="+56 9 1234 5678" required>
+                  <p id="owner-phone-error" class="hidden text-xs text-rose-600 dark:text-rose-400 font-bold mt-1">
+                    ⚠️ Ingresa un número de celular válido para enviarte el comprobante.
+                  </p>
+                </div>
+
+                <div>
+                  <label for="owner-email" class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">
+                    Correo electrónico (Opcional):
+                  </label>
+                  <input type="email" id="owner-email" class="input-accessible" placeholder="correo@ejemplo.com">
+                </div>
+              </div>
+
+              <!-- Checkbox de política amigable -->
+              <div class="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 flex items-start gap-2">
+                <span>🔒</span>
+                <span>Tus datos solo se usan para confirmar tu cita y enviarte recordatorios preventivos 24h antes. Puedes cancelar o reprogramar sin costo con un clic.</span>
+              </div>
+
+              <!-- Botones de Acción Paso 3 -->
+              <div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col-reverse sm:flex-row justify-between gap-4">
+                <button type="button" id="btn-back-to-step-2" class="btn-accessible btn-outline text-slate-700 dark:text-slate-200 text-sm font-semibold">
+                  ← Volver a Fecha y Hora
+                </button>
+                <button type="button" id="btn-confirm-booking" class="btn-accessible btn-primary text-base font-extrabold px-8 shadow-lg">
+                  ✓ Confirmar mi Cita
+                </button>
+              </div>
+
+            </div>
+
+            <!-- ----------------------------------------------------------------
+                 PANTALLA 4: CITA CONFIRMADA (VOUCHER Y POST-CITA)
+                 ---------------------------------------------------------------- -->
+            <div id="wizard-step-4" class="hidden text-center space-y-6">
+              
+              <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 text-3xl flex items-center justify-center mx-auto shadow-inner">
+                ✓
+              </div>
+
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/60 px-3 py-1 rounded-full">
+                  Cita Agendada Exitosamente
+                </span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-2">
+                  ¡Todo listo! Te esperamos en Patitas Felices
+                </h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm max-w-md mx-auto mt-1">
+                  Hemos enviado los detalles a tu WhatsApp. No necesitas imprimir nada, solo dar tu código o nombre al llegar.
+                </p>
+              </div>
+
+              <!-- Voucher Digital Resumen con soporte de Dark Mode -->
+              <div class="bg-white dark:bg-slate-800 border-2 border-emerald-600 dark:border-emerald-500 rounded-2xl p-6 text-left max-w-md mx-auto shadow-md space-y-3">
+                <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 uppercase font-semibold">Código de Reserva</span>
+                  <span id="voucher-code" class="text-lg font-mono font-extrabold text-emerald-800 dark:text-emerald-400">PAT-0000</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-slate-600 dark:text-slate-400">Paciente:</span>
+                  <span id="voucher-pet" class="font-bold text-slate-900 dark:text-white">-</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-slate-600 dark:text-slate-400">Servicio:</span>
+                  <span id="voucher-service" class="font-bold text-slate-900 dark:text-white">-</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-slate-600 dark:text-slate-400">Fecha y Hora:</span>
+                  <span id="voucher-datetime" class="font-bold text-emerald-800 dark:text-emerald-400">-</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-slate-600 dark:text-slate-400">Tutor:</span>
+                  <span id="voucher-owner" class="font-semibold text-slate-800 dark:text-slate-200">-</span>
+                </div>
+                <div class="flex justify-between text-sm pt-2 border-t border-slate-100 dark:border-slate-700">
+                  <span class="font-bold text-slate-900 dark:text-white">Total a pagar:</span>
+                  <span id="voucher-price" class="font-extrabold text-emerald-800 dark:text-emerald-400 text-lg">-</span>
+                </div>
+              </div>
+
+              <!-- Acciones Post-Reserva -->
+              <div class="flex flex-col sm:flex-row justify-center gap-3 max-w-md mx-auto pt-2">
+                <button type="button" id="btn-add-calendar" class="btn-accessible btn-outline text-xs sm:text-sm font-bold flex items-center justify-center gap-2">
+                  <span>📅</span> Agregar a mi Calendario
+                </button>
+                <button type="button" id="btn-share-whatsapp" class="btn-accessible bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2">
+                  <span>💬</span> Compartir por WhatsApp
+                </button>
+              </div>
+
+              <div class="pt-4">
+                <button type="button" id="btn-new-booking" class="text-xs text-slate-500 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 underline font-medium">
+                  Agendar otra cita para otra mascota
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         5. SECCIÓN: NUESTRO EQUIPO VETERINARIO
+         ======================================================================== -->
+    <section id="equipo" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-3.5 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-800">
+            Profesionales Colegiados
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-3">
+            Conoce a Quienes Cuidarán de tu Mascota
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mt-2">
+            Un equipo médico estable, con vocación y experiencia que conoce a cada paciente por su nombre.
+          </p>
+        </div>
+
+        <div id="team-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Renderizado dinámicamente desde app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         6. SECCIÓN: TESTIMONIOS REALES DE VECINOS
+         ======================================================================== -->
+    <section id="testimonios" class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-3.5 py-1.5 rounded-full border border-amber-200 dark:border-amber-800">
+            Opiniones Verificadas en Google Maps
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-3">
+            La Experiencia de Nuestros Vecinos
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mt-2">
+            Tutores como Valentina, Don Carlos y Mariana confían en nosotros día a día.
+          </p>
+        </div>
+
+        <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Renderizado dinámicamente desde app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         7. SECCIÓN: CONTACTO, UBICACIÓN Y HORARIOS
+         ======================================================================== -->
+    <section id="contacto" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+              Siempre Cerca de Ti
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+              Estamos en el corazón de Providencia
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+              Fácil acceso, estacionamiento para clientes y entrada a nivel de calle apta para mascotas de edad avanzada o con movilidad reducida.
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <div class="flex items-start gap-4">
+                <span class="text-2xl">📍</span>
+                <div>
+                  <h4 class="font-bold text-slate-900 dark:text-white text-sm">Dirección Física:</h4>
+                  <p class="text-slate-600 dark:text-slate-300 text-sm">Av. Los Leones 1420, Providencia, Santiago</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span class="text-2xl">⏰</span>
+                <div>
+                  <h4 class="font-bold text-slate-900 dark:text-white text-sm">Horario de Consultas Regulares:</h4>
+                  <p class="text-slate-600 dark:text-slate-300 text-sm">Lunes a Sábado de 08:30 a 20:00 hrs</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span class="text-2xl">🚨</span>
+                <div>
+                  <h4 class="font-bold text-rose-700 dark:text-rose-400 text-sm">Guardia Médica de Urgencias:</h4>
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold text-sm">Operativa 24 horas, los 365 días del año</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span class="text-2xl">📞</span>
+                <div>
+                  <h4 class="font-bold text-slate-900 dark:text-white text-sm">Teléfono Directo:</h4>
+                  <p class="text-slate-600 dark:text-slate-300 text-sm font-semibold">+56 2 2345 6789</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2 flex gap-3">
+              <a href="https://maps.google.com" target="_blank" class="btn-accessible btn-outline text-xs sm:text-sm font-bold gap-2">
+                <span>🗺️</span> Abrir en Google Maps
+              </a>
+              <button type="button" class="open-sos-btn btn-accessible btn-emergency text-xs sm:text-sm font-bold gap-2">
+                <span>🚨</span> Ver Urgencias
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Mapa Interactivo / Representación Visual -->
+          <div class="lg:col-span-7">
+            <div class="bg-slate-100 dark:bg-slate-800 rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 shadow-md h-96 relative flex items-center justify-center p-6 text-center">
+              <div>
+                <span class="text-5xl block mb-3">🏥🐾</span>
+                <h4 class="text-xl font-bold text-slate-800 dark:text-white">Clínica Veterinaria «Patitas Felices»</h4>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-sm">Av. Los Leones 1420 (Entre Pocuro y Eliodoro Yáñez)</p>
+                <div class="mt-4 inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 px-3 py-1.5 rounded-full text-xs font-semibold border border-emerald-200 dark:border-emerald-800">
+                  <span>♿ Acceso plano sin escalones para mascotas senior</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       8. PIE DE PÁGINA (FOOTER GLOBAL)
+       ======================================================================== -->
+  <footer class="bg-slate-900 text-white py-14 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        
+        <div class="md:col-span-2 space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="text-3xl">🐾</span>
+            <span class="text-2xl font-extrabold tracking-tight">Patitas <span class="text-emerald-400">Felices</span></span>
+          </div>
+          <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+            Clínica veterinaria de barrio comprometida con la salud, la transparencia médica y la tranquilidad de las familias y sus mascotas desde 2018.
+          </p>
+          <div class="flex items-center gap-2 text-xs text-emerald-400">
+            <span>🛡️</span>
+            <span>Cumplimiento estricto de accesibilidad WCAG 2.1 AA</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white text-base mb-4">Enlaces Rápidos</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#servicios" class="hover:text-emerald-400 transition-colors">Servicios y Tarifas</a></li>
+            <li><a href="#agendar-seccion" class="hover:text-emerald-400 transition-colors">Agendar Cita en 2 min</a></li>
+            <li><a href="#equipo" class="hover:text-emerald-400 transition-colors">Equipo Médico</a></li>
+            <li><a href="guia-estilos.html" class="hover:text-emerald-400 transition-colors font-semibold text-emerald-400">Guía de Estilos UI</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white text-base mb-4">Contacto Directo</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li>📞 Fijo: (2) 2345-6789</li>
+            <li>💬 WhatsApp: +56 9 8765 4321</li>
+            <li>🚨 Urgencias 24h: Opción 1</li>
+            <li>📍 Providencia, Santiago</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 Clínica Veterinaria Patitas Felices. Todos los derechos reservados.</p>
+        <p>Proyecto UI/UX desarrollado según requerimientos de Lexpin.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       9. MODAL FLOTANTE DE EMERGENCIAS SOS 24 HORAS
+       ======================================================================== -->
+  <div id="sos-modal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 border-4 border-rose-600 dark:border-rose-600 shadow-2xl relative animate-fadeIn transition-colors duration-200">
+      
+      <!-- Cerrar Modal -->
+      <button id="close-sos-btn" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 dark:hover:text-white p-2 rounded-xl text-xl font-bold min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Cerrar ventana de emergencia">
+        ✕
+      </button>
+
+      <div class="text-center space-y-3 mb-6">
+        <div class="w-16 h-16 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 text-3xl flex items-center justify-center mx-auto animate-pulse">
+          🚨
+        </div>
+        <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">
+          Atención Médica de Urgencia 24 Horas
+        </h3>
+        <p class="text-slate-600 dark:text-slate-300 text-sm">
+          Si tu mascota corre peligro vital inminente, comunícate de inmediato con nuestro equipo de turno o dirígete a la clínica sin esperar cita previa.
+        </p>
+      </div>
+
+      <!-- Acciones Inmediatas de Auxilio -->
+      <div class="space-y-3 mb-6">
+        <a href="tel:+56223456789" class="btn-accessible btn-emergency w-full text-base font-extrabold justify-center shadow-lg gap-2">
+          <span>📞</span> Llamar a Guardia Médica (+56 2 2345 6789)
+        </a>
+        
+        <a href="https://wa.me/56987654321?text=URGENCIA%20MEDICA%20VETERINARIA" target="_blank" class="btn-accessible bg-emerald-700 hover:bg-emerald-800 text-white w-full text-base font-bold justify-center gap-2">
+          <span>💬</span> Chat Directo de Urgencia por WhatsApp
+        </a>
+
+        <a href="https://maps.google.com" target="_blank" class="btn-accessible btn-outline w-full text-sm font-semibold justify-center gap-2">
+          <span>🚗</span> Abrir Ruta GPS en Waze / Google Maps
+        </a>
+      </div>
+
+      <!-- Guía Rápida de Triaje -->
+      <div class="bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 rounded-xl p-4 text-xs text-rose-950 dark:text-rose-200 space-y-1">
+        <span class="font-bold block text-sm">Signos de alarma extrema:</span>
+        <p>• Dificultad severa para respirar o jadeo excesivo en reposo.</p>
+        <p>• Convulsiones, desmayos o incapacidad súbita para caminar.</p>
+        <p>• Sospecha de intoxicación o ingesta de veneno/cuerpos extraños.</p>
+        <p>• Traumatismo por caída de altura o atropello.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       10. BARRA FLOTANTE MÓVIL PERSISTENTE (BOTTOM ACTION BAR)
+       ======================================================================== -->
+  <aside class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center gap-3 shadow-lg transition-colors duration-200" aria-label="Acciones rápidas móviles">
+    <button type="button" class="open-sos-btn btn-accessible btn-emergency flex-1 text-xs font-bold py-2.5 px-2 gap-1.5 justify-center">
+      <span>🚨</span> Urgencias 24h
+    </button>
+    <a href="#agendar-seccion" class="btn-accessible btn-primary flex-1 text-xs font-bold py-2.5 px-2 justify-center">
+      <span>📅</span> Agendar Cita
+    </a>
+  </aside>
+
+  <!-- ========================================================================
+       11. PANTALLA 3: MODAL DE DETALLE DE UN SERVICIO (REQUERIDO)
+       ======================================================================== -->
+  <div id="service-detail-modal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl relative max-h-[90vh] overflow-y-auto animate-fadeIn">
+      
+      <button id="close-service-modal-btn" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 dark:hover:text-white p-2 rounded-xl text-xl font-bold" aria-label="Cerrar detalle">
+        ✕
+      </button>
+
+      <div class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span id="detail-modal-badge" class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+            Especialidad
+          </span>
+          <span id="detail-modal-duration" class="text-xs text-slate-500 dark:text-slate-400 font-medium">⏱ 30 min</span>
+        </div>
+
+        <h3 id="detail-modal-name" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+          Detalle del Servicio
+        </h3>
+
+        <div class="flex items-baseline gap-2">
+          <span class="text-xs text-slate-500 uppercase font-semibold">Arancel referencial:</span>
+          <span id="detail-modal-price" class="text-2xl font-extrabold text-emerald-800 dark:text-emerald-400">$22.000</span>
+          <span class="text-xs text-slate-500">(tarifa fija sin cargos ocultos)</span>
+        </div>
+
+        <p id="detail-modal-desc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-3">
+          Descripción completa del servicio.
+        </p>
+
+        <!-- Qué incluye -->
+        <div class="space-y-2">
+          <h4 class="font-bold text-slate-900 dark:text-white text-sm">¿Qué incluye esta atención médica?</h4>
+          <ul id="detail-modal-includes" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5 bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+            <!-- Inyectado dinámicamente -->
+          </ul>
+        </div>
+
+        <!-- Preparación previa -->
+        <div class="space-y-1 bg-amber-50 dark:bg-amber-950/40 p-4 rounded-xl border border-amber-200 dark:border-amber-900/60 text-xs text-amber-950 dark:text-amber-200">
+          <span class="font-bold block text-sm">📋 Preparación previa de la mascota:</span>
+          <p id="detail-modal-prep">Instrucciones de preparación antes de la consulta.</p>
+        </div>
+
+        <!-- Profesional a cargo -->
+        <div class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
+          <span>🩺 <strong>Médico veterinario a cargo:</strong></span>
+          <span id="detail-modal-doctor" class="font-semibold text-slate-800 dark:text-slate-200">Dr. Ricardo Morales</span>
+        </div>
+
+        <!-- Botón de Agendamiento Directo -->
+        <div class="pt-2 border-t border-slate-100 dark:border-slate-800">
+          <button type="button" id="book-from-modal-btn" class="btn-accessible btn-primary w-full text-base font-bold shadow-md">
+            📅 Agendar este Servicio Ahora (menos de 2 min)
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       12. PUNTO EXTRA: MODAL DE SECCIÓN «MIS MASCOTAS» (HISTORIAL DE VACUNAS)
+       ======================================================================== -->
+  <div id="mis-mascotas-modal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl relative max-h-[90vh] overflow-y-auto animate-fadeIn">
+      
+      <button id="close-my-pets-btn" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 dark:hover:text-white p-2 rounded-xl text-xl font-bold" aria-label="Cerrar mis mascotas">
+        ✕
+      </button>
+
+      <div class="space-y-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/70 px-3 py-1 rounded-full">
+            Carnet Digital & Historial
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-2">
+            Mis Mascotas Registradas
+          </h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">
+            Control de vacunas, desparasitaciones y próximos controles médicos preventivos.
+          </p>
+        </div>
+
+        <!-- Tarjeta Mascota 1: Milo (Valentina) -->
+        <div class="bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🐱</span>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Milo</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Gato Común Europeo • 1 año • Macho castrado</p>
+              </div>
+            </div>
+            <span class="text-xs font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">
+              ✓ Sanitario al Día
+            </span>
+          </div>
+
+          <!-- Tabla de Vacunas de Milo -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead>
+                <tr class="text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-700 pb-2">
+                  <th class="py-2">Vacuna / Tratamiento</th>
+                  <th class="py-2">Última Dosis</th>
+                  <th class="py-2">Estado</th>
+                  <th class="py-2">Próximo Refuerzo</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200 font-medium">
+                <tr>
+                  <td class="py-2.5 font-bold">Triple Felina (Panleucopenia, Calicivirus)</td>
+                  <td class="py-2.5">15/03/2026</td>
+                  <td class="py-2.5 text-emerald-700 dark:text-emerald-400 font-bold">Vigente</td>
+                  <td class="py-2.5">Marzo 2027</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold">Antirrábica Oficial</td>
+                  <td class="py-2.5">10/06/2026</td>
+                  <td class="py-2.5 text-emerald-700 dark:text-emerald-400 font-bold">Vigente</td>
+                  <td class="py-2.5">Junio 2027</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold">Desparasitación Interna</td>
+                  <td class="py-2.5">05/08/2026</td>
+                  <td class="py-2.5 text-amber-600 dark:text-amber-400 font-bold">Por vencer</td>
+                  <td class="py-2.5 text-amber-600 dark:text-amber-400 font-bold">Noviembre 2026 (En 15 días)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pt-2 flex justify-end">
+            <a href="#agendar-seccion" onclick="document.getElementById('mis-mascotas-modal').classList.add('hidden'); document.body.style.overflow='auto';" class="btn-accessible btn-primary text-xs font-bold py-2 px-4 rounded-xl">
+              📅 Agendar Refuerzo de Milo
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta Mascota 2: Simón (Don Carlos) -->
+        <div class="bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🐶</span>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Simón</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Labrador Retriever • 11 años • Senior con artrosis</p>
+              </div>
+            </div>
+            <span class="text-xs font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">
+              ✓ Control Geriátrico
+            </span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead>
+                <tr class="text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-700 pb-2">
+                  <th class="py-2">Vacuna / Control</th>
+                  <th class="py-2">Última Atención</th>
+                  <th class="py-2">Médico</th>
+                  <th class="py-2">Próxima Cita</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200 font-medium">
+                <tr>
+                  <td class="py-2.5 font-bold">Vacuna Óctuple Canina</td>
+                  <td class="py-2.5">20/01/2026</td>
+                  <td class="py-2.5">Dr. Ricardo Morales</td>
+                  <td class="py-2.5 text-emerald-700 dark:text-emerald-400">Enero 2027</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold">Chequeo Articular & Analgésicos</td>
+                  <td class="py-2.5">15/09/2026</td>
+                  <td class="py-2.5">Dr. Ricardo Morales</td>
+                  <td class="py-2.5 text-emerald-700 dark:text-emerald-400">Diciembre 2026</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pt-2 flex justify-end">
+            <a href="#agendar-seccion" onclick="document.getElementById('mis-mascotas-modal').classList.add('hidden'); document.body.style.overflow='auto';" class="btn-accessible btn-primary text-xs font-bold py-2 px-4 rounded-xl">
+              📅 Agendar Control para Simón
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts de la Aplicación -->
+  <script src="src/js/data.js"></script>
+  <script src="src/js/app.js"></script>
+</body>
+</html>

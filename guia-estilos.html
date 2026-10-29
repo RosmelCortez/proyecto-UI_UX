@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de Estilos UI — Patitas Felices (Design System)</title>
+  
+  <!-- Script anti-parpadeo -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <!-- Tailwind CSS CDN con Modo Oscuro -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Estilos del Sistema -->
+  <link rel="stylesheet" href="src/css/styles.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#ebf7ee',
+              500: '#1e7e34',
+              700: '#155724',
+              800: '#0e3d19',
+            },
+            emergency: {
+              50: '#fef2f2',
+              500: '#ef4444',
+              600: '#dc2626',
+              700: '#b91c1c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 p-6 md:p-12 max-w-6xl mx-auto transition-colors duration-200">
+
+  <!-- Header del Design System con Toggle de Modo Oscuro -->
+  <header class="border-b border-slate-200 dark:border-slate-800 pb-8 mb-12">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+      <div>
+        <span class="text-xs font-bold tracking-wider text-emerald-800 dark:text-emerald-300 uppercase bg-emerald-100 dark:bg-emerald-950/70 px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">
+          Design System & Accesibilidad WCAG 2.1 AA / Modo Oscuro
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mt-3">
+          Guía de Estilos UI — «Patitas Felices»
+        </h1>
+        <p class="text-slate-600 dark:text-slate-300 text-lg mt-2 max-w-2xl">
+          Especificación de tokens visuales, jerarquía tipográfica accesible y componentes interactivos con soporte completo para modo claro y modo oscuro.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Toggle Tema -->
+        <button id="guide-theme-toggle" type="button" class="btn-accessible p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-100 dark:hover:bg-slate-700 min-h-[48px] min-w-[48px] flex items-center justify-center" aria-label="Alternar tema">
+          <span id="guide-sun" class="hidden text-xl">☀️</span>
+          <span id="guide-moon" class="text-xl">🌙</span>
+        </button>
+
+        <a href="index.html" class="btn-accessible btn-primary text-sm">
+          ← Ver Sitio Web en Vivo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. Paleta de Colores y Ratios WCAG -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+      1. Paleta de Colores Accesible (WCAG AA / AAA)
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Primario -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <h3 class="font-bold text-slate-900 dark:text-white mb-4 text-lg">Primaria (Salud & Confianza)</h3>
+        <div class="space-y-3">
+          <div class="h-16 rounded-xl bg-[#155724] text-white p-3 flex justify-between items-end font-semibold text-sm shadow-inner">
+            <span>Primary 700 (CTA)</span>
+            <span class="text-xs bg-black/30 px-2 py-0.5 rounded">#155724 • AAA (7.45:1)</span>
+          </div>
+          <div class="h-12 rounded-xl bg-[#0e3d19] text-white p-3 flex justify-between items-end font-medium text-xs">
+            <span>Primary 800 (Hover)</span>
+            <span>#0e3d19</span>
+          </div>
+          <div class="h-12 rounded-xl bg-[#ebf7ee] dark:bg-emerald-950/70 text-emerald-950 dark:text-emerald-200 p-3 flex justify-between items-end font-medium text-xs border border-emerald-200 dark:border-emerald-800">
+            <span>Primary 50 (Fondo suave)</span>
+            <span>#ebf7ee</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Urgencias / SOS -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <h3 class="font-bold text-slate-900 dark:text-white mb-4 text-lg">Emergencias 24h & Alertas</h3>
+        <div class="space-y-3">
+          <div class="h-16 rounded-xl bg-[#dc2626] text-white p-3 flex justify-between items-end font-semibold text-sm shadow-inner">
+            <span>Emergency 600 (SOS)</span>
+            <span class="text-xs bg-black/30 px-2 py-0.5 rounded">#dc2626 • AA (4.82:1)</span>
+          </div>
+          <div class="h-12 rounded-xl bg-[#b91c1c] text-white p-3 flex justify-between items-end font-medium text-xs">
+            <span>Emergency 700 (Hover)</span>
+            <span>#b91c1c</span>
+          </div>
+          <div class="h-12 rounded-xl bg-[#fef2f2] dark:bg-rose-950/50 text-rose-950 dark:text-rose-200 p-3 flex justify-between items-end font-medium text-xs border border-rose-200 dark:border-rose-900">
+            <span>Emergency 50 (Fondo alerta)</span>
+            <span>#fef2f2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Neutros y Texto -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <h3 class="font-bold text-slate-900 dark:text-white mb-4 text-lg">Neutros de Alta Legibilidad</h3>
+        <div class="space-y-3">
+          <div class="h-16 rounded-xl bg-[#0f172a] text-white p-3 flex justify-between items-end font-semibold text-sm shadow-inner">
+            <span>Neutral 900 (Titulares)</span>
+            <span class="text-xs bg-white/20 px-2 py-0.5 rounded">#0f172a • AAA (15.6:1)</span>
+          </div>
+          <div class="h-12 rounded-xl bg-[#475569] text-white p-3 flex justify-between items-end font-medium text-xs">
+            <span>Neutral 600 (Secundario)</span>
+            <span class="text-xs bg-white/20 px-2 py-0.5 rounded">AA (5.45:1)</span>
+          </div>
+          <div class="h-12 rounded-xl bg-[#f8fafc] dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-3 flex justify-between items-end font-medium text-xs border border-slate-200 dark:border-slate-700">
+            <span>Neutral 50 (Canvas)</span>
+            <span>#f8fafc</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2. Tipografía y Jerarquía Visual -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+      2. Jerarquía Tipográfica (Fuente: Plus Jakarta Sans)
+    </h2>
+    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+      
+      <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+        <span class="text-xs font-bold text-slate-400 uppercase">H1 Display / Hero (40px - 48px) • Bold</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mt-1">Cuidamos la salud de tu mejor amigo</h1>
+      </div>
+
+      <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+        <span class="text-xs font-bold text-slate-400 uppercase">H2 Títulos de Sección (30px - 36px) • Bold</span>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">Nuestros Servicios con Precios Claros</h2>
+      </div>
+
+      <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+        <span class="text-xs font-bold text-slate-400 uppercase">H3 Subtítulos / Cards (22px - 24px) • SemiBold</span>
+        <h3 class="text-2xl font-semibold text-slate-900 dark:text-white mt-1">Consulta Médica Felina Cat-Friendly</h3>
+      </div>
+
+      <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+        <span class="text-xs font-bold text-slate-400 uppercase">Texto Base / Cuerpo (18px - 20px) • Regular (Accesible para Don Carlos)</span>
+        <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 leading-relaxed">
+          Más de 8 años dedicados al bienestar integral de perros y gatos en tu barrio. Agendamiento online en menos de 2 minutos.
+        </p>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold text-slate-400 uppercase">Microcopia & Badges (14px - 16px) • Mínimo admisible</span>
+        <p class="text-base text-slate-600 dark:text-slate-400 mt-1">
+          * Todas las consultas incluyen revisión de signos vitales, chequeo ótico y recomendaciones nutricionales.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. Componentes de Botones con Todos sus Estados -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+      3. Botones Reutilizables y sus Estados (Touch Target Mínimo: 48px)
+    </h2>
+
+    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-semibold uppercase text-xs">
+              <th class="py-3 px-4">Tipo de Botón</th>
+              <th class="py-3 px-4">Estado Default</th>
+              <th class="py-3 px-4">Estado Hover / Active</th>
+              <th class="py-3 px-4">Estado Disabled</th>
+              <th class="py-3 px-4">Estado Focus Visible</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+            
+            <!-- Botón Primario -->
+            <tr>
+              <td class="py-4 px-4 font-bold text-slate-900 dark:text-white">
+                Primario (CTA)
+                <span class="block text-xs font-normal text-slate-500 dark:text-slate-400">Agendar Cita</span>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" class="btn-accessible btn-primary text-sm">
+                  Agendar Cita
+                </button>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" class="btn-accessible bg-[#0e3d19] text-white text-sm shadow-md">
+                  Hover / Active
+                </button>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" disabled class="btn-accessible btn-primary text-sm">
+                  Deshabilitado
+                </button>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" class="btn-accessible btn-primary text-sm ring-4 ring-emerald-300 dark:ring-emerald-800">
+                  Focus Ring
+                </button>
+              </td>
+            </tr>
+
+            <!-- Botón Emergencias -->
+            <tr>
+              <td class="py-4 px-4 font-bold text-rose-700 dark:text-rose-400">
+                Emergencias SOS
+                <span class="block text-xs font-normal text-slate-500 dark:text-slate-400">Persistente</span>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" class="btn-accessible btn-emergency text-sm gap-2">
+                  <span>🚨</span> SOS Urgencias
+                </button>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" class="btn-accessible bg-[#b91c1c] text-white text-sm shadow-lg gap-2">
+                  <span>🚨</span> Hover SOS
+                </button>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" disabled class="btn-accessible bg-slate-200 dark:bg-slate-800 text-slate-400 text-sm cursor-not-allowed">
+                  No disponible
+                </button>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" class="btn-accessible btn-emergency text-sm ring-4 ring-rose-300 dark:ring-rose-800">
+                  Focus SOS
+                </button>
+              </td>
+            </tr>
+
+            <!-- Botón Secundario Outline -->
+            <tr>
+              <td class="py-4 px-4 font-bold text-slate-800 dark:text-slate-200">
+                Secundario / Outline
+                <span class="block text-xs font-normal text-slate-500 dark:text-slate-400">Ver Detalles</span>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" class="btn-accessible btn-outline text-sm">
+                  Conocer Servicios
+                </button>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" class="btn-accessible border-2 border-emerald-700 bg-emerald-50 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-sm">
+                  Hover Outline
+                </button>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" disabled class="btn-accessible btn-outline text-sm opacity-50 cursor-not-allowed">
+                  Deshabilitado
+                </button>
+              </td>
+              <td class="py-4 px-4">
+                <button type="button" class="btn-accessible btn-outline text-sm ring-4 ring-slate-200 dark:ring-slate-700">
+                  Focus Outline
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Campos de Formulario y Estados de Error -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+      4. Campos de Formulario y Validación Accesible
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Estado Normal -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <label class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Estado Normal / Default</label>
+        <input type="text" class="input-accessible" placeholder="Ej: Milo Ramos" value="">
+        <span class="text-xs text-slate-500 dark:text-slate-400 mt-2 block">Campo listo para entrada de datos.</span>
+      </div>
+
+      <!-- Estado Focus -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <label class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">Estado Focus Activo</label>
+        <input type="text" class="input-accessible border-emerald-700 dark:border-emerald-500 ring-4 ring-emerald-100 dark:ring-emerald-950" value="Valentina Ramos">
+        <span class="text-xs text-emerald-800 dark:text-emerald-400 font-semibold mt-2 block">✓ Anillo de foco de 4px visible.</span>
+      </div>
+
+      <!-- Estado de Error -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <label class="block text-sm font-bold text-rose-800 dark:text-rose-400 mb-2">Estado Error (WCAG AA)</label>
+        <input type="text" class="input-accessible is-error" value="123" aria-invalid="true">
+        <span class="text-xs text-rose-700 dark:text-rose-400 font-bold mt-2 flex items-center gap-1">
+          ⚠️ Ingresa un número telefónico válido
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="text-center text-slate-500 dark:text-slate-400 text-sm border-t border-slate-200 dark:border-slate-800 pt-8 mt-12">
+    © 2026 Clínica Veterinaria Patitas Felices — Sistema de Diseño UI/UX
+  </footer>
+
+  <script>
+    const guideToggle = document.getElementById("guide-theme-toggle");
+    const guideSun = document.getElementById("guide-sun");
+    const guideMoon = document.getElementById("guide-moon");
+
+    function updateGuideIcons() {
+      const isDark = document.documentElement.classList.contains("dark");
+      if (isDark) {
+        guideSun.classList.remove("hidden");
+        guideMoon.classList.add("hidden");
+      } else {
+        guideSun.classList.add("hidden");
+        guideMoon.classList.remove("hidden");
+      }
+    }
+
+    updateGuideIcons();
+
+    guideToggle.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      updateGuideIcons();
+    });
+  </script>
+
+</body>
+</html>

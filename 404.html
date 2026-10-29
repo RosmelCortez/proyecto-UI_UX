@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página no encontrada (Error 404) — Patitas Felices</title>
+  
+  <!-- Script anti-parpadeo para Modo Oscuro -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231e7e34'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm6 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z'/></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN con Dark Mode -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#ebf7ee',
+              500: '#1e7e34',
+              700: '#155724',
+              800: '#0e3d19',
+            },
+            emergency: {
+              50: '#fef2f2',
+              600: '#dc2626',
+              700: '#b91c1c',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between transition-colors duration-200">
+
+  <!-- Header Simplificado -->
+  <header class="w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+      
+      <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 shrink-0" aria-label="Volver al inicio">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-700 flex items-center justify-center text-white text-xl sm:text-2xl shadow-sm shrink-0">
+          🐾
+        </div>
+        <div>
+          <span class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight block">
+            Patitas <span class="text-emerald-700 dark:text-emerald-400">Felices</span>
+          </span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium block leading-none mt-0.5">
+            Clínica Veterinaria • 8 años contigo
+          </span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <!-- Toggle Modo Oscuro -->
+        <button id="theme-toggle-404" type="button" class="btn-accessible p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 min-h-[42px] min-w-[42px]" aria-label="Cambiar tema">
+          <span id="sun-404" class="hidden text-lg">☀️</span>
+          <span id="moon-404" class="text-lg">🌙</span>
+        </button>
+
+        <a href="index.html#agendar-seccion" class="btn-accessible btn-primary text-xs sm:text-sm py-2 px-4 rounded-xl font-bold">
+          Agendar Cita
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Contenido Central 404 -->
+  <main class="flex-1 flex items-center justify-center p-6 my-10">
+    <div class="max-w-xl w-full text-center space-y-6">
+      
+      <!-- Ilustración Empática de Mascota Curiosa -->
+      <div class="relative w-44 h-44 mx-auto flex items-center justify-center">
+        <div class="w-40 h-40 rounded-full bg-emerald-100 dark:bg-emerald-950/70 border-4 border-emerald-300 dark:border-emerald-800 flex items-center justify-center text-6xl shadow-inner animate-pulse-subtle">
+          🐶❓
+        </div>
+        <span class="absolute -bottom-2 right-2 text-3xl">🐾</span>
+      </div>
+
+      <div class="space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/70 px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">
+          Error 404 • Página No Encontrada
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-2">
+          ¡Ups! Esta patita se desvió del camino
+        </h1>
+        <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed max-w-md mx-auto">
+          No pudimos encontrar la página que buscas. Es posible que el enlace haya cambiado o que la dirección esté mal escrita.
+        </p>
+      </div>
+
+      <!-- Buscador de Rescate Rápido -->
+      <div class="max-w-md mx-auto">
+        <form action="index.html#servicios" method="GET" class="flex gap-2">
+          <input type="text" placeholder="¿Qué necesitas? Ej: Vacunas, Consulta, Urgencias..." class="input-accessible text-sm" aria-label="Buscar servicio en la clínica">
+          <button type="submit" class="btn-accessible btn-primary text-sm px-5 shrink-0 font-bold">
+            Buscar
+          </button>
+        </form>
+      </div>
+
+      <!-- Botones de Rescate Directo -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+        <a href="index.html" class="btn-accessible btn-primary text-sm font-bold w-full sm:w-auto px-6 shadow-md">
+          🏠 Volver a la Página Principal
+        </a>
+        <a href="index.html#agendar-seccion" class="btn-accessible btn-outline text-sm font-semibold w-full sm:w-auto px-6">
+          📅 Agendar Cita en Línea
+        </a>
+      </div>
+
+      <!-- Aviso de Emergencias SOS -->
+      <div class="bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/60 rounded-2xl p-4 text-xs text-rose-900 dark:text-rose-200 max-w-md mx-auto flex items-center justify-between gap-3">
+        <div class="text-left">
+          <span class="font-bold block">¿Tu mascota tiene una urgencia médica?</span>
+          <span>Llámanos de inmediato sin esperar.</span>
+        </div>
+        <a href="tel:+56223456789" class="btn-accessible btn-emergency text-xs font-bold py-2 px-3 rounded-xl whitespace-nowrap shrink-0">
+          🚨 Llamar 24h
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Simplificado -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+    <p>© 2026 Clínica Veterinaria Patitas Felices • Av. Los Leones 1420, Providencia, Santiago • Tel: (2) 2345-6789</p>
+  </footer>
+
+  <script>
+    const themeBtn = document.getElementById("theme-toggle-404");
+    const sunIcon = document.getElementById("sun-404");
+    const moonIcon = document.getElementById("moon-404");
+
+    function updateIcons() {
+      const isDark = document.documentElement.classList.contains("dark");
+      if (isDark) {
+        sunIcon.classList.remove("hidden");
+        moonIcon.classList.add("hidden");
+      } else {
+        sunIcon.classList.add("hidden");
+        moonIcon.classList.remove("hidden");
+      }
+    }
+
+    updateIcons();
+
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        updateIcons();
+      });
+    }
+  </script>
+
+</body>
+</html>

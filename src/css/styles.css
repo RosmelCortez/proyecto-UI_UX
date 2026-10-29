@@ -1,0 +1,290 @@
+/* ==========================================================================
+   PATITAS FELICES — ESTILOS GLOBALES & ACCESIBILIDAD (WCAG 2.1 AA)
+   Soporte Completo para Modo Claro y Modo Oscuro
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Paleta Primaria - Salud & Confianza (WCAG AAA sobre blanco) */
+  --color-primary-50: #ebf7ee;
+  --color-primary-100: #c9eed0;
+  --color-primary-500: #1e7e34;
+  --color-primary-700: #155724;
+  --color-primary-800: #0e3d19;
+
+  /* Paleta Emergencias / SOS 24h */
+  --color-emergency-50: #fef2f2;
+  --color-emergency-100: #fee2e2;
+  --color-emergency-500: #ef4444;
+  --color-emergency-600: #dc2626;
+  --color-emergency-700: #b91c1c;
+
+  /* Paleta Neutros Modo Claro */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-600: #475569;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* Accesibilidad: Altura táctil mínima */
+  --touch-target-min: 48px;
+}
+
+/* Transición suave entre temas & prevención de desbordamiento */
+html {
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--color-neutral-900);
+  background-color: var(--color-neutral-50);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.dark body {
+  color: #f1f5f9;
+  background-color: #020617; /* Slate 950 profundo */
+}
+
+/* ==========================================================================
+   COMPONENTES DE BOTONES Y SUS ESTADOS OBLIGATORIOS (WCAG AA)
+   ========================================================================== */
+
+/* Altura mínima accesible para dedos y motricidad reducida (Don Carlos) */
+.btn-accessible {
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+/* 1. Botón Primario (Verde Salud) */
+.btn-primary {
+  background-color: var(--color-primary-700);
+  color: #ffffff;
+  border: 2px solid transparent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dark .btn-primary {
+  background-color: #15803d; /* Emerald 700 con brillo accesible en fondo oscuro */
+  color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-800);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15);
+}
+
+.dark .btn-primary:hover:not(:disabled) {
+  background-color: #166534;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+  background-color: #082910;
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.4);
+}
+
+.dark .btn-primary:focus-visible {
+  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.4);
+}
+
+.btn-primary:disabled {
+  background-color: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+.dark .btn-primary:disabled {
+  background-color: #334155;
+  color: #64748b;
+}
+
+/* 2. Botón de Emergencia SOS (Rojo Urgencias) */
+.btn-emergency {
+  background-color: var(--color-emergency-600);
+  color: #ffffff;
+  border: 2px solid transparent;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.25);
+}
+
+.btn-emergency:hover:not(:disabled) {
+  background-color: var(--color-emergency-700);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px -2px rgba(220, 38, 38, 0.35);
+}
+
+.btn-emergency:active:not(:disabled) {
+  transform: scale(0.97);
+  background-color: #991b1b;
+}
+
+.btn-emergency:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.4);
+}
+
+/* 3. Botón Secundario / Outline */
+.btn-outline {
+  background-color: #ffffff;
+  color: var(--color-neutral-800);
+  border: 2px solid var(--color-neutral-200);
+}
+
+.dark .btn-outline {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--color-primary-700);
+  color: var(--color-primary-700);
+  background-color: var(--color-primary-50);
+}
+
+.dark .btn-outline:hover:not(:disabled) {
+  border-color: #22c55e;
+  color: #4ade80;
+  background-color: #064e3b;
+}
+
+.btn-outline:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-outline:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(100, 116, 139, 0.25);
+}
+
+/* ==========================================================================
+   INPUTS Y ESTADOS DE FORMULARIO EN CLARO Y OSCURO
+   ========================================================================== */
+
+.input-accessible {
+  min-height: 50px;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--color-neutral-900);
+  background-color: #ffffff;
+  border: 2px solid var(--color-neutral-200);
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.dark .input-accessible {
+  color: #f8fafc;
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+.input-accessible:hover {
+  border-color: #94a3b8;
+}
+
+.dark .input-accessible:hover {
+  border-color: #64748b;
+}
+
+.input-accessible:focus {
+  outline: none;
+  border-color: var(--color-primary-700);
+  box-shadow: 0 0 0 4px rgba(30, 126, 52, 0.15);
+}
+
+.dark .input-accessible:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+}
+
+/* Estado de Error */
+.input-accessible.is-error,
+.input-accessible:invalid:not(:placeholder-shown) {
+  border-color: var(--color-emergency-600) !important;
+  background-color: var(--color-emergency-50);
+}
+
+.dark .input-accessible.is-error {
+  background-color: rgba(127, 29, 29, 0.25);
+  border-color: #ef4444 !important;
+}
+
+.input-accessible.is-error:focus {
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2) !important;
+}
+
+/* Deshabilitado */
+.input-accessible:disabled {
+  background-color: var(--color-neutral-100);
+  border-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.dark .input-accessible:disabled {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   MICROINTERACCIONES Y ANIMACIONES
+   ========================================================================== */
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.85; }
+  50% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.85; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-ring 2.5s infinite ease-in-out;
+}
+
+.step-content {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.shake-error {
+  animation: shakeError 0.4s ease-in-out;
+}
