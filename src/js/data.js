@@ -129,7 +129,7 @@ const CLINIC_DATA = {
       reg: "Colmevet 6120",
       exp: "7 años de experiencia",
       bio: "Certificada en manejo de bajo estrés para felinos y medicina interna. Amante incondicional de los gatos.",
-      avatar: "https://images.unsplash.com/photo-1594824813637-2917e76e5d7d?auto=format&fit=crop&w=400&q=80"
+      avatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=400&q=80"
     },
     {
       name: "Dra. Valeria Muñoz",

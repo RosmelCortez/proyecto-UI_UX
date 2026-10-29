@@ -155,22 +155,22 @@ function initBookingWizard(state) {
     });
   });
 
-  // Selector de Servicio en Paso 1 (Templates adaptados a Dark Mode)
+  // Selector de Servicio en Paso 1 (Templates adaptados a Dark Mode & optimizados para móvil)
   const serviceCardsContainer = document.getElementById("booking-services-list");
   if (serviceCardsContainer) {
     serviceCardsContainer.innerHTML = CLINIC_DATA.services.map(s => `
-      <div class="service-select-card border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/80 rounded-xl p-4 cursor-pointer hover:border-emerald-600 dark:hover:border-emerald-500 transition-all flex justify-between items-center" data-id="${s.id}">
-        <div>
-          <div class="flex items-center gap-2">
-            <h4 class="font-bold text-slate-900 dark:text-white text-base">${s.name}</h4>
-            <span class="text-xs bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-semibold px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">${s.badge}</span>
+      <div class="service-select-card border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/80 rounded-2xl p-3.5 sm:p-4.5 cursor-pointer hover:border-emerald-600 dark:hover:border-emerald-500 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4" data-id="${s.id}">
+        <div class="flex-1 min-w-0">
+          <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+            <h4 class="font-bold text-slate-900 dark:text-white text-base leading-snug">${s.name}</h4>
+            <span class="text-[11px] sm:text-xs bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-semibold px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800 shrink-0">${s.badge}</span>
           </div>
-          <p class="text-slate-600 dark:text-slate-300 text-sm mt-1">${s.description}</p>
-          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 inline-block">⏱ ${s.duration} de atención</span>
+          <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm line-clamp-2 leading-relaxed">${s.description}</p>
+          <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 inline-block">⏱ ${s.duration} de atención</span>
         </div>
-        <div class="text-right pl-4">
-          <span class="text-lg font-bold text-emerald-800 dark:text-emerald-400 block">${s.priceFormatted}</span>
-          <span class="text-xs text-slate-500 dark:text-slate-400">tarifa fija</span>
+        <div class="flex items-center sm:flex-col justify-between sm:justify-center sm:text-right pt-2.5 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-slate-700/60 shrink-0">
+          <span class="text-xs text-slate-500 dark:text-slate-400 sm:order-2">tarifa fija</span>
+          <span class="text-base sm:text-lg font-extrabold text-emerald-800 dark:text-emerald-400 sm:order-1">${s.priceFormatted}</span>
         </div>
       </div>
     `).join("");
